@@ -1,87 +1,44 @@
-# Active Context: Next.js Starter Template
+# Active Context: НАЙТ-СИТИ — киберпанк сайт ТГ-канала
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**Project Status**: ✅ Cyberpunk landing for Telegram channel "НАЙТ-СИТИ" is built and working
 
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+Одностраничный сайт в киберпанк-стиле для телеграм-канала «НАЙТ-СИТИ»: автор делится путём к корпорации-единорогу и учит делать приложения, автоматизацию, ботов и нейросети. Сайт на русском языке.
 
 ## Recently Completed
 
-- [x] Base Next.js 16 setup with App Router
-- [x] TypeScript configuration with strict mode
-- [x] Tailwind CSS 4 integration
-- [x] ESLint configuration
-- [x] Memory bank documentation
-- [x] Recipe system for common features
+- [x] Киберпанк-тема в `globals.css`: неоновая палитра (void/neon/magenta/acid/violet), глитч-эффект, сканлайны, перспективная сетка, clip-path углы, reveal-анимации
+- [x] Самохостинг шрифтов (woff2 в `public/fonts/`): Unbounded (display), JetBrains Mono (mono), Press Start 2P (pixel) — кириллица + латиница, подключены через `@font-face` (next/font/google не работает в песочнице — нет доступа к Google Fonts из Node)
+- [x] Hero: матричный дождь на canvas (`CyberRain`), глитч-заголовок, ротация фраз (`Typewriter`), HUD-декор
+- [x] Бегущая строка `Ticker`, секция «О канале» с печатающимся `Terminal`
+- [x] `Features` — 4 направления контента с SVG-иконками
+- [x] `Roadmap` — «Путь к единорогу» как RPG-прокачка: XP-бар, кликабельные уровни LVL 1→99, карточка деталей
+- [x] `Stats` — анимированные счётчики при скролле
+- [x] Мини-игра `BreachGame` — взлом терминала (breach-протокол: матрица 6×6, маршрут, буфер, таймер; маршрут генерируется гарантированно проходимым)
+- [x] Мини-игра `ReactionGame` — тест реакции с рекордом в localStorage
+- [x] `CTA` + `Footer`, фиксированный `Header` с якорной навигацией
+- [x] typecheck / lint / build — все зелёные
 
-## Current Structure
+## Key Files
 
-| File/Directory | Purpose | Status |
-|----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| File/Directory | Purpose |
+|----------------|---------|
+| `src/lib/site.ts` | TG_LINK / TG_HANDLE — **заменить на реальную ссылку канала** |
+| `src/app/globals.css` | Тема, keyframes, утилиты (.glitch, .panel-cyber, .btn-cyber, .grid-floor и др.) |
+| `src/components/*.tsx` | Все секции и игры |
+| `public/fonts/` | woff2 шрифты (не удалять) |
 
-## Current Focus
+## Conventions
 
-The template is ready. Next steps depend on user requirements:
-
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
-
-## Quick Start Guide
-
-### To add a new page:
-
-Create a file at `src/app/[route]/page.tsx`:
-```tsx
-export default function NewPage() {
-  return <div>New page content</div>;
-}
-```
-
-### To add components:
-
-Create `src/components/` directory and add components:
-```tsx
-// src/components/ui/Button.tsx
-export function Button({ children }: { children: React.ReactNode }) {
-  return <button className="px-4 py-2 bg-blue-600 text-white rounded">{children}</button>;
-}
-```
-
-### To add a database:
-
-Follow `.kilocode/recipes/add-database.md`
-
-### To add API routes:
-
-Create `src/app/api/[route]/route.ts`:
-```tsx
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json({ message: "Hello" });
-}
-```
-
-## Available Recipes
-
-| Recipe | File | Use Case |
-|--------|------|----------|
-| Add Database | `.kilocode/recipes/add-database.md` | Data persistence with Drizzle + SQLite |
-
-## Pending Improvements
-
-- [ ] Add more recipes (auth, email, etc.)
-- [ ] Add example components
-- [ ] Add testing setup recipe
+- Цвета/шрифты только через theme-токены Tailwind (`text-neon`, `font-display`, `font-pixel`...)
+- Интерактивные компоненты — `"use client"`; секции-обёртки — server components
+- Без эмодзи в UI; декоративные символы: ▸ ✦ ▌ //
+- Пакетный менеджер: `bun`; проверки перед коммитом: `bun typecheck && bun lint && bun run build`
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
 | Initial | Template created with base setup |
+| 2026-07-16 | Построен киберпанк-лендинг «НАЙТ-СИТИ»: hero с матричным дождём, терминал, roadmap-прокачка, 2 мини-игры, самохостинг шрифтов |

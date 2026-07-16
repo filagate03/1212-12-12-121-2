@@ -1,1 +1,466 @@
 @import "tailwindcss";
+
+/* ---------- fonts (self-hosted) ---------- */
+
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/unbounded-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/fonts/unbounded-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jbmono-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("/fonts/jbmono-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/press-cyrillic.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+  font-family: "Press Start 2P";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/press-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --font-unbounded: "Unbounded", sans-serif;
+  --font-jbmono: "JetBrains Mono", ui-monospace, monospace;
+  --font-press: "Press Start 2P", monospace;
+}
+
+@theme {
+  --color-void: #04060e;
+  --color-panel: #0a0f1e;
+  --color-panel2: #0d1428;
+  --color-line: #1c2547;
+  --color-neon: #00f0ff;
+  --color-magenta: #ff2a6d;
+  --color-acid: #b6ff00;
+  --color-amber: #ffb800;
+  --color-violet: #8a2fff;
+  --color-ice: #d8f6ff;
+  --color-dim: #5c6b8a;
+
+  --font-display: var(--font-unbounded), sans-serif;
+  --font-mono: var(--font-jbmono), ui-monospace, monospace;
+  --font-pixel: var(--font-press), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-ice);
+}
+
+::selection {
+  background: var(--color-magenta);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-line);
+  border: 2px solid var(--color-void);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neon);
+}
+
+/* ---------- keyframes ---------- */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes glitch-a {
+  0% {
+    clip-path: inset(12% 0 78% 0);
+    transform: translate(-4px, -2px);
+  }
+  20% {
+    clip-path: inset(64% 0 8% 0);
+    transform: translate(4px, 1px);
+  }
+  40% {
+    clip-path: inset(32% 0 48% 0);
+    transform: translate(-3px, 2px);
+  }
+  60% {
+    clip-path: inset(80% 0 4% 0);
+    transform: translate(3px, -1px);
+  }
+  80% {
+    clip-path: inset(6% 0 86% 0);
+    transform: translate(-4px, 1px);
+  }
+  100% {
+    clip-path: inset(45% 0 40% 0);
+    transform: translate(4px, 2px);
+  }
+}
+
+@keyframes glitch-b {
+  0% {
+    clip-path: inset(70% 0 10% 0);
+    transform: translate(3px, 2px);
+  }
+  25% {
+    clip-path: inset(10% 0 75% 0);
+    transform: translate(-4px, -1px);
+  }
+  50% {
+    clip-path: inset(50% 0 30% 0);
+    transform: translate(4px, -2px);
+  }
+  75% {
+    clip-path: inset(25% 0 60% 0);
+    transform: translate(-3px, 1px);
+  }
+  100% {
+    clip-path: inset(85% 0 5% 0);
+    transform: translate(3px, -1px);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  3% {
+    opacity: 0.4;
+  }
+  6% {
+    opacity: 1;
+  }
+  7% {
+    opacity: 0.2;
+  }
+  8% {
+    opacity: 1;
+  }
+  46% {
+    opacity: 1;
+  }
+  47% {
+    opacity: 0.55;
+  }
+  48% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes scan-y {
+  0% {
+    top: -12%;
+  }
+  100% {
+    top: 112%;
+  }
+}
+
+@keyframes grid-move {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 48px;
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 42, 109, 0.55);
+  }
+  100% {
+    box-shadow: 0 0 0 16px rgba(255, 42, 109, 0);
+  }
+}
+
+@keyframes pulse-ring-neon {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 14px rgba(0, 240, 255, 0);
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- utility classes ---------- */
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.animate-flicker {
+  animation: flicker 4s linear infinite;
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+.animate-float {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.6s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.animate-pulse-ring-neon {
+  animation: pulse-ring-neon 1.8s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 14s linear infinite;
+}
+
+.glow-neon {
+  text-shadow:
+    0 0 8px rgba(0, 240, 255, 0.75),
+    0 0 28px rgba(0, 240, 255, 0.4);
+}
+
+.glow-magenta {
+  text-shadow:
+    0 0 8px rgba(255, 42, 109, 0.75),
+    0 0 28px rgba(255, 42, 109, 0.4);
+}
+
+.glow-acid {
+  text-shadow:
+    0 0 8px rgba(182, 255, 0, 0.7),
+    0 0 28px rgba(182, 255, 0, 0.35);
+}
+
+.text-outline {
+  -webkit-text-stroke: 1px rgba(0, 240, 255, 0.28);
+  color: transparent;
+}
+
+.clip-cyber {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+.clip-cyber-sm {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+.panel-cyber {
+  background: linear-gradient(160deg, var(--color-panel2), var(--color-panel));
+  border: 1px solid var(--color-line);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% 100%,
+    18px 100%,
+    0 calc(100% - 18px)
+  );
+}
+
+.btn-cyber {
+  clip-path: polygon(
+    0 0,
+    calc(100% - 14px) 0,
+    100% 14px,
+    100% 100%,
+    14px 100%,
+    0 calc(100% - 14px)
+  );
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.15s ease;
+}
+
+.btn-cyber:active {
+  transform: scale(0.97);
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: var(--color-magenta);
+  animation: glitch-a 2.6s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  color: var(--color-neon);
+  animation: glitch-b 3.1s infinite linear alternate-reverse;
+}
+
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0 2px,
+    rgba(0, 0, 0, 0.16) 2px 4px
+  );
+}
+
+.vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(2, 3, 8, 0.75) 100%
+  );
+}
+
+.scanbeam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 18%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 240, 255, 0.05),
+    transparent
+  );
+  animation: scan-y 8s linear infinite;
+}
+
+.grid-floor {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(0, 240, 255, 0.16) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to top, rgba(0, 240, 255, 0.16) 1px, transparent 1px);
+  background-size: 48px 48px;
+  transform: perspective(340px) rotateX(64deg) scale(1.8);
+  transform-origin: top;
+  animation: grid-move 1.8s linear infinite;
+  mask-image: linear-gradient(to bottom, transparent, black 30%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 30%);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.hud-corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-color: var(--color-neon);
+  opacity: 0.7;
+}
