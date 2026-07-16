@@ -2,9 +2,9 @@
 
 ## Current State
 
-**Project Status**: ✅ Cyberpunk landing for Telegram channel "НАЙТ-СИТИ" is built and working
+**Project Status**: ✅ Cyberpunk landing for Telegram channel "НАЙТ-СИТИ" is built and working. Telegram link and author photo updated to real channel.
 
-Одностраничный сайт в киберпанк-стиле для телеграм-канала «НАЙТ-СИТИ»: автор делится путём к корпорации-единорогу и учит делать приложения, автоматизацию, ботов и нейросети. Сайт на русском языке.
+Одностраничный сайт в киберпанк-стиле для телеграм-канала «НАЙТ-СИТИ»: автор делится путём к корпорации-единорогу и учит делать приложения, автоматизацию, ботов и нейросети. Сайт на русском языке. Ссылка Telegram заменена на `https://t.me/aleksei_hunt`, фото автора добавлено в секцию About.
 
 ## Recently Completed
 
@@ -24,7 +24,8 @@
 
 | File/Directory | Purpose |
 |----------------|---------|
-| `src/lib/site.ts` | TG_LINK / TG_HANDLE — **заменить на реальную ссылку канала** |
+| `public/images/author.jpg` | Author photo displayed in About section |
+| `src/lib/site.ts` | TG_LINK / TG_HANDLE — real channel: `https://t.me/aleksei_hunt` |
 | `src/app/globals.css` | Тема, keyframes, утилиты (.glitch, .panel-cyber, .btn-cyber, .grid-floor и др.) |
 | `src/components/*.tsx` | Все секции и игры |
 | `public/fonts/` | woff2 шрифты (не удалять) |
@@ -42,3 +43,4 @@
 |------|---------|
 | Initial | Template created with base setup |
 | 2026-07-16 | Построен киберпанк-лендинг «НАЙТ-СИТИ»: hero с матричным дождём, терминал, roadmap-прокачка, 2 мини-игры, самохостинг шрифтов |
+| 2026-07-16 | Добавлено фото автора в About; ссылка Telegram обновлена на `https://t.me/aleksei_hunt` |
